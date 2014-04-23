@@ -1,0 +1,22 @@
+<%@val posts: Seq[typetalk4s.Post] %>
+
+<h3><a href="https://typetalk.in/topics/4611">Typetalk Hack Tokyo</a> - 2014.04.23 @ SmartNews</h3>
+<hr/>
+<form action="/post" method="post">
+<p>
+<input type="text" name="message" size=100 placeholder="何か入力してね" />
+</p>
+<p>
+<input type="submit" value="Typetalk Hack Tokyo に投稿" class="btn btn-primary"/>
+</p>
+</form>
+
+<hr/>
+<p>
+#for (post <- posts.reverse)
+  <p class="well well-sm">
+  「${post.message}」 by @${post.account.name}
+  </p>
+#end
+</p>
+
