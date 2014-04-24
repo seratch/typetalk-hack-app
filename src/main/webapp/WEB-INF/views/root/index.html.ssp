@@ -1,22 +1,35 @@
+<%@val topicId: Long %>
 <%@val posts: Seq[typetalk4s.Post] %>
 
 <h3><a href="https://typetalk.in/topics/4611">Typetalk Hack Tokyo</a> - 2014.04.23 @ SmartNews</h3>
 <hr/>
+<p>
+topic_id: <input type="text" id="topic-id-input" size=100 placeholder="${topicId}" />
+<p>
+</form>
 <form action="/post" method="post">
 <p>
-<input type="text" name="message" size=100 placeholder="何か入力してね" />
+message: <input type="text" name="message" size=100 placeholder="何か入力してね" />
+<input type="hidden" name="topic_id" value="${topicId}" />
 </p>
 <p>
-<input type="submit" value="Typetalk Hack Tokyo に投稿" class="btn btn-primary"/>
+<input type="submit" value="Typetalk に投稿" class="btn btn-primary"/>
 </p>
 </form>
 
 <hr/>
 <p>
-#for (post <- posts.reverse)
+#if (posts.isEmpty)
+  <p>まだ投稿がない、もしくはアクセス権限のないトピックです。</p>
+#else
+  #for (post <- posts.reverse)
   <p class="well well-sm">
   「${post.message}」 by @${post.account.name}
   </p>
+  #end
 #end
 </p>
 
+<script>
+$('#topic-id-input').change(function() { location.href = '/?topic_id=' + $('#topic-id-input').val(); });
+</script>

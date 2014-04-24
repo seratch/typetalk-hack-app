@@ -13,6 +13,7 @@
       ${unescape(body)}
       <hr/>
       <a class="btn btn-default" href="http://www.zusaar.com/event/4757003">イベントページ</a>
+      <hr/>
     </div>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${uri("/assets/js/skinny-framework.js")}"></script>
