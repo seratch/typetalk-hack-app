@@ -2,8 +2,9 @@ package typetalk4s
 
 import org.scalatest.FunSpec
 import org.scalatest.matchers.ShouldMatchers
+import skinny.Logging
 
-class TypetalkClientSpec extends FunSpec with ShouldMatchers {
+class TypetalkClientSpec extends FunSpec with ShouldMatchers with Logging {
 
   val typetalk = Typetalk()
   val topicId = 4611
@@ -15,15 +16,17 @@ class TypetalkClientSpec extends FunSpec with ShouldMatchers {
     }
   }
 
+  lazy val accessToken = typetalk.accessToken().get
+
   describe("#post") {
     it("should work") {
-      // typetalk.post(topicId, "Scala からテスト")
+      // typetalk.post(accessToken, topicId, "Scala からテスト")
     }
   }
 
   describe("#messages") {
     it("should work") {
-      println(typetalk.messages(topicId))
+      logger.info(typetalk.messages(accessToken, topicId))
     }
   }
 
